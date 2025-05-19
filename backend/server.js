@@ -28,6 +28,9 @@ connectDB();
 // Routes
 app.use("/api/v1/auth", authRoutes);
 
+// Serve static files from the "uploads" directory
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
