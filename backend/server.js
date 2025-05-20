@@ -6,6 +6,8 @@ const morgan = require('morgan');
 
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
+const incomeRoutes = require("./routes/incomeRoutes");
+
 
 // Create Express app
 const app = express();
@@ -27,6 +29,7 @@ connectDB();
 
 // Routes
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/income", incomeRoutes);
 
 // Serve static files from the "uploads" directory
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
