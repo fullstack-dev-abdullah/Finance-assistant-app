@@ -177,7 +177,7 @@ function Dashboard() {
 
   return (
     <DashboardLayout activeMenu="dashboard">
-      <div className="p-6 bg-gray-50 h-screen ">
+      <div className="p-10 bg-gray-50 h-screen overflow-y-auto ">
         {/* Header Section */}
         <div className="mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
@@ -303,7 +303,7 @@ function Dashboard() {
         </div>
 
         {/* Monthly Summary Card */}
-        <div className="mt-8 h-full ">
+        <div className="mt-8 mb-20">
           <Card>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
               <h2 className="text-xl font-semibold text-gray-900">

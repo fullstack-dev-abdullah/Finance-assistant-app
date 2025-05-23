@@ -5,11 +5,13 @@ import Sidebar from "./Sidebar";
 import { FaRegUser } from "react-icons/fa";
 import { Button } from "../ui";
 import { Toaster } from "react-hot-toast";
+import { useUserAuth } from "../../hooks/useUserAuth";
 
 function DashboardLayout({ children, activeMenu }) {
   const { user } = useContext(UserContext);
   console.log(user, "user in dashboard layout");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  useUserAuth();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -59,7 +61,7 @@ function DashboardLayout({ children, activeMenu }) {
             max-[1080px]:ml-0
           `}
           >
-            <div className="p-6">{children}</div>
+            <div className="">{children}</div>
           </div>
         </div>
       )}

@@ -10,6 +10,7 @@ import SignUp from "./pages/auth/SignUp";
 import Dashboard from "./pages/dashboard/Dashboard";
 import UserProvider from "./context/UserContext";
 import IncomeDashboard from "./pages/income/IncomeDashboard";
+import AddIncome from "./pages/income/AddIncome";
 function App() {
   return (
     <UserProvider >
@@ -21,6 +22,9 @@ function App() {
             <Route path="/register" element={<SignUp />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/income" element={<IncomeDashboard />} />
+            <Route path="/income/add" element={<IncomeDashboard/>} />
+
+            
           </Routes>
         </Router>
       </div>
