@@ -57,7 +57,7 @@ export const sidebarData = {
           label: "Expenses",
           icon: "HiTrendingDown",
           path: "/expenses",
-          badge: "12",
+          badge: "2",
           subItems: [
             {
               id: "add-expense",

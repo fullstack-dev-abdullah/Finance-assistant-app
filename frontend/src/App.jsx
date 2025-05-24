@@ -11,6 +11,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import UserProvider from "./context/UserContext";
 import IncomeDashboard from "./pages/income/IncomeDashboard";
 import AddIncome from "./pages/income/AddIncome";
+import ExpenseDashboard from "./pages/expense/ExpenseDashboard";
 function App() {
   return (
     <UserProvider >
@@ -23,8 +24,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/income" element={<IncomeDashboard />} />
             <Route path="/income/add" element={<IncomeDashboard/>} />
-
-            
+            <Route path="/expenses" element={<ExpenseDashboard />} />
+            <Route path="/expenses/add" element={<ExpenseDashboard />} />
           </Routes>
         </Router>
       </div>

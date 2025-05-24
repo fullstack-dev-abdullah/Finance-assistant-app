@@ -10,7 +10,7 @@ import { useUserAuth } from "../../hooks/useUserAuth";
 function DashboardLayout({ children, activeMenu }) {
   const { user } = useContext(UserContext);
   console.log(user, "user in dashboard layout");
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   useUserAuth();
 
   const toggleSidebar = () => {
