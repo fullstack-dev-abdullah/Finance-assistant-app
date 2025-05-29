@@ -19,8 +19,10 @@ import RecentTransactions from "../../components/dashboard/RecentTransactions";
 import Chart from "../../components/dashboard/Chart";
 
 import { Button, Card, Select } from "../../components/ui";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 import moment from "moment";
+import axiosInstance from "../../utils/axiosinstance";
+import { API_ENDPOINTS } from "../../utils/apiPaths";
 function Dashboard() {
   useUserAuth();
   // This hook checks if the user is authenticated and redirects to login if not
@@ -35,94 +37,15 @@ function Dashboard() {
     const fetchDashboardData = async () => {
       setLoading(true);
       try {
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-
-        setDashboardData({
-          stats: {
-            totalBalance: 25840.5,
-            totalIncome: 15420.5,
-            totalExpenses: 8950.25,
-            monthlyChange: 12.5,
-            transactionCount: 45,
-          },
-          recentTransactions: [
-            {
-              id: 1,
-              type: "income",
-              source: "Salary Payment",
-              amount: 2500.0,
-              category: "Employment",
-              account: "Checking",
-              date: "2024-01-15",
-              recurring: true,
-            },
-            {
-              id: 2,
-              type: "expense",
-              description: "Grocery Shopping",
-              amount: 145.8,
-              category: "Food",
-              account: "Checking",
-              date: "2024-01-14",
-              recurring: false,
-            },
-            {
-              id: 3,
-              type: "income",
-              source: "Freelance Project",
-              amount: 850.0,
-              category: "Freelance",
-              account: "Savings",
-              date: "2024-01-12",
-              recurring: false,
-            },
-            {
-              id: 4,
-              type: "expense",
-              description: "Electric Bill",
-              amount: 89.5,
-              category: "Utilities",
-              account: "Checking",
-              date: "2024-01-10",
-              recurring: true,
-            },
-            {
-              id: 5,
-              type: "expense",
-              description: "Coffee Shop",
-              amount: 12.45,
-              category: "Food",
-              account: "Cash",
-              date: "2024-01-09",
-              recurring: false,
-            },
-          ],
-          chartData: {
-            monthly: [
-              { name: "Jan", income: 4200, expenses: 3100 },
-              { name: "Feb", income: 3800, expenses: 2800 },
-              { name: "Mar", income: 4500, expenses: 3400 },
-              { name: "Apr", income: 4100, expenses: 3200 },
-              { name: "May", income: 4800, expenses: 3600 },
-              { name: "Jun", income: 4300, expenses: 3000 },
-            ],
-          },
-          categoryBreakdown: {
-            income: [
-              { category: "Employment", amount: 2500.0 },
-              { category: "Freelance", amount: 850.0 },
-              { category: "Investment", amount: 285.5 },
-              { category: "Property", amount: 204.75 },
-            ],
-            expenses: [
-              { category: "Food", amount: 485.2 },
-              { category: "Transportation", amount: 220.5 },
-              { category: "Utilities", amount: 180.75 },
-              { category: "Entertainment", amount: 150.0 },
-            ],
-          },
-        });
+        const response = await axiosInstance.get(
+          API_ENDPOINTS.DASHBOARD.GET_DASHBOARD_DATA
+        );
+        if (response.status === 200) {
+          setDashboardData(response.data.data);
+        } else {
+          toast.error("Failed to load dashboard data");
+          console.error("Dashboard data fetch error:", response.statusText);
+        }
       } catch (error) {
         toast.error("Failed to load dashboard data");
         console.error("Dashboard data fetch error:", error);
@@ -203,7 +126,11 @@ function Dashboard() {
                 className="min-w-32"
               />
 
-              <Button variant="outline" size="sm" onClick={() => toast.success("Filter applied!")}>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => toast.success("Filter applied!")}
+              >
                 <HiFilter className="h-4 w-4 mr-2" />
                 Filter
               </Button>

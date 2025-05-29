@@ -1,4 +1,4 @@
-const { predictCategory } = require("../ai-integrations/CategoryPredictor");
+// const { predictCategory } = require("../ai-integrations/CategoryPredictor");
 const Expense = require("../models/expense");
 const xlxs = require("xlsx");
 
@@ -6,10 +6,10 @@ const addExpense = async (req, res) => {
   try {
     let { amount, category, description, date } = req.body;
     // If no category or set to "auto", use AI prediction
-    if (!category || category === "auto") {
-      category = await predictCategory(description);
-      console.log(`🔮 Predicted category: ${category}`);
-    }
+    // if (!category || category === "auto") {
+    //   category = await predictCategory(description);
+    //   console.log(`🔮 Predicted category: ${category}`);
+    // }
 
     const userId = req.user.id;
     const expense = new Expense({

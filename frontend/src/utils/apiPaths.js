@@ -9,7 +9,7 @@ export const API_ENDPOINTS = {
         GET_USER_INFO: `${BASE_URL}/auth/profile`,
     },
     DASHBOARD:{
-        GET_DASHBOARD_DATA: `${BASE_URL}/dashboard`,},
+        GET_DASHBOARD_DATA: `${BASE_URL}/dashboard/get`,},
     INCOME:{
         GET_ALL_INCOME: `${BASE_URL}/income/get`,
         ADD_INCOME: `${BASE_URL}/income/add`,
