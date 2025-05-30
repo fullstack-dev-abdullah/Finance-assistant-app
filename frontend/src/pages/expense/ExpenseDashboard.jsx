@@ -3,6 +3,7 @@ import DashboardLayout from "../../components/layouts/DashboardLayout";
 import { Button } from "../../components/ui";
 import { HiPlus } from "react-icons/hi";
 import AddExpense from "./AddExpense";
+import Header from "../../components/dashboard/Header";
 
 const ExpenseDashboard = () => {
      const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,6 +33,7 @@ const ExpenseDashboard = () => {
               </Button>
             </div>
           </div>
+        
         </div>
       </div>
      <AddExpense isOpen={isModalOpen} onClose={handleModalToggle} />

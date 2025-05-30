@@ -4,7 +4,6 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import { FaRegUser } from "react-icons/fa";
 import { Button } from "../ui";
-import { Toaster } from "react-hot-toast";
 import { useUserAuth } from "../../hooks/useUserAuth";
 
 function DashboardLayout({ children, activeMenu }) {
@@ -19,7 +18,6 @@ function DashboardLayout({ children, activeMenu }) {
 
   return (
     <div className="overflow-y-auto bg-gray-50">
-        <Toaster/>
       <Navbar
         activeMenu={activeMenu}
         isSidebarOpen={isSidebarOpen}

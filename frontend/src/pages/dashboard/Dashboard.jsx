@@ -23,6 +23,7 @@ import toast, { Toaster } from "react-hot-toast";
 import moment from "moment";
 import axiosInstance from "../../utils/axiosinstance";
 import { API_ENDPOINTS } from "../../utils/apiPaths";
+import Header from "../../components/dashboard/Header";
 function Dashboard() {
   useUserAuth();
   // This hook checks if the user is authenticated and redirects to login if not
@@ -103,39 +104,10 @@ function Dashboard() {
       <div className="p-10 bg-gray-50 h-screen overflow-y-auto ">
         {/* Header Section */}
         <div className="mb-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                Welcome back! 👋
-              </h1>
-              <p className="text-gray-600">
-                Here's what's happening with your finances today.
-              </p>
-            </div>
-
-            <div className="flex items-center space-x-4 mt-4 sm:mt-0">
-              <Select
-                options={[
-                  { value: "week", label: "This Week" },
-                  { value: "month", label: "This Month" },
-                  { value: "quarter", label: "This Quarter" },
-                  { value: "year", label: "This Year" },
-                ]}
-                value={timeframe}
-                onChange={(e) => setTimeframe(e.target.value)}
-                className="min-w-32"
-              />
-
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => toast.success("Filter applied!")}
-              >
-                <HiFilter className="h-4 w-4 mr-2" />
-                Filter
-              </Button>
-            </div>
-          </div>
+          <Header
+            header={" Welcome back! 👋"}
+            description={`Here's what's happening with your finances today.`}
+          />
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

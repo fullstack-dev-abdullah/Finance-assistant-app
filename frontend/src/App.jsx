@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -12,9 +11,11 @@ import UserProvider from "./context/UserContext";
 import IncomeDashboard from "./pages/income/IncomeDashboard";
 import AddIncome from "./pages/income/AddIncome";
 import ExpenseDashboard from "./pages/expense/ExpenseDashboard";
+import { Toaster } from "react-hot-toast";
 function App() {
   return (
     <UserProvider >
+      <Toaster/>
       <div>
         <Router>
           <Routes>

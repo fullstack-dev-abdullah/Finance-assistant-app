@@ -16,6 +16,7 @@ import axiosInstance from "../../utils/axiosinstance";
 import { API_ENDPOINTS } from "../../utils/apiPaths";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
+import toast from "react-hot-toast";
 const Login = () => {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
@@ -79,10 +80,10 @@ const Login = () => {
 
         if (error.response && error.response.data.message) {
           // Handle unauthorized access
-          setError(error.response.data.message);
+          toast.error(error.response.data.message);
         } else {
           // Handle timeout error
-          setError("Something went wrong, please try again.");
+          toast.error("Something went wrong, please try again.");
         }
       }
     } else {
@@ -104,9 +105,9 @@ const Login = () => {
       } catch (error) {
         console.log(error, "error");
         if (error.response && error.response.data.message) {
-          setError(error.response.data.message);
+          toast.error(error.response.data.message);
         } else {
-          setError("Something went wrong, please try again.");
+          toast.error("Something went wrong, please try again.");
         }
       }
     }
